@@ -94,9 +94,8 @@ theme.titlebar_maximized_button_focus_active    = theme.confdir .. "/icons/title
 
 -- set variable
 local browser = "google-chrome"
-local editor  = "gvim"
-local git     = "gitkraken" 
-local sublime = "sublime_text"
+local editor  = "atom"
+local git     = "gitkraken"
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -270,16 +269,12 @@ awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
-    -- Each screen has its own tag table.
-    -- awful.tag({ "Web", "Terminal", "Dev", "File+Git", "etc" }, s, awful.layout.layouts[1])
-	
 	tags = {
-		names  = {"Web", "Devlopment",  "Terminal+", "etc"},
+		names  = {"Web", "Devlopment",  "Terminal+"},
 		layout = {
 			awful.layout.layouts[10],
 			awful.layout.layouts[2],
-			awful.layout.layouts[2],
-			awful.layout.layouts[1]
+			awful.layout.layouts[2]
 		}
 	}
 
@@ -410,7 +405,6 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey 			  }, "b", function () awful.spawn(browser) end),
 	awful.key({ modkey 			  }, "e", function () awful.spawn(editor) end),
 	awful.key({ modkey 			  }, "g", function () awful.spawn(git) end),
-	awful.key({ modkey 			  }, "s", function () awful.spawn(sublime) end),
 	awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
 	          {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
