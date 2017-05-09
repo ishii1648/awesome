@@ -96,6 +96,7 @@ theme.titlebar_maximized_button_focus_active    = theme.confdir .. "/icons/title
 local browser = "google-chrome"
 local editor  = "atom"
 local git     = "gitkraken"
+local remmina  = "remmina"
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -270,11 +271,12 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
 	tags = {
-		names  = {"Web", "Devlopment",  "Terminal+"},
+		names  = {"Web", "Editor",  "Terminal", "RDP"},
 		layout = {
 			awful.layout.layouts[10],
 			awful.layout.layouts[2],
-			awful.layout.layouts[2]
+			awful.layout.layouts[2],
+      awful.layout.layouts[10]
 		}
 	}
 
@@ -405,6 +407,7 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey 			  }, "b", function () awful.spawn(browser) end),
 	awful.key({ modkey 			  }, "e", function () awful.spawn(editor) end),
 	awful.key({ modkey 			  }, "g", function () awful.spawn(git) end),
+  awful.key({ modkey				}, "r", "a", function () awful.spawn(remmina) end),
 	awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
 	          {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
